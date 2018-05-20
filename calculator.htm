@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+  <title>ESKİSEHİR</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<nav class="navbar navbar-inverse">
+  
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">ESKISEHİR</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="home.htm">Home</a></li>
+      <li><a href="localdishes.htm">Local Dishes</a></li>
+      <li><a href="historicalplaces.htm">Historical Places</a></li>
+      <li><a href="usefullinks.htm">Useful Links</a></li>
+	   <li><a href="aboutme.htm">About me</a></li>
+      <li><a href="contactme.htm">Contact me</a></li>
+      <li><a href="registration.htm"><font size="5">Registration</font></a></li>
+    </ul>
+
+</nav>
+
+<meta charset="utf-8">
+<title>A Simple Calculator</title>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+<style>
+   
+    table {
+        width: 100%;
+        border-color: #f4f4f4;
+    }
+    td {
+        width: 25%;
+    }
+    button {
+        width: 100%;
+        height: 70px;
+        font-size: 24px;
+        background-color: white;
+        border: none;
+    }
+    #inputLabel {
+        height: 120px;
+        font-size: 40px;
+        vertical-align: bottom;
+        text-align: right;
+        padding-right: 16px;
+        
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <table border="4" cellspacing="0">
+        <tr>
+            <td colspan="4" id="inputLabel">0</td>
+        </tr>
+        <tr>
+            <td colspan="3"><button onclick="pbtn(this);">AC</button></td>
+            <td><button onclick="pbtn(this);">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="pbtn(this);">7</button></td>
+            <td><button onclick="pbtn(this);">8</button></td>
+            <td><button onclick="pbtn(this);">9</button></td>
+            <td><button onclick="pbtn(this);">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="pbtn(this);">4</button></td>
+            <td><button onclick="pbtn(this);">5</button></td>
+            <td><button onclick="pbtn(this);">6</button></td>
+            <td><button onclick="pbtn(this);">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="pbtn(this);">1</button></td>
+            <td><button onclick="pbtn(this);">2</button></td>
+            <td><button onclick="pbtn(this);">3</button></td>
+            <td><button onclick="pbtn(this);">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="pbtn(this);">0</button></td>
+            <td><button onclick="pbtn(this);">.</button></td>
+            <td><button onclick="pbtn(this);">=</button></td>
+			<td><button onClick="pbtn(this);">1/x</button></td>
+			
+        </tr>
+		
+    </table>
+</div>
+ 
+<script>
+    var inputLabel = document.getElementById('inputLabel');
+     
+    function pbtn(obj) {
+         
+        var push = obj.innerHTML;
+         
+        if (push == '=') {
+            // Calculate
+            inputLabel.innerHTML = eval(inputLabel.innerHTML);
+             
+        } else if (push == 'AC') {
+            // All Clear
+            inputLabel.innerHTML = '0';
+			
+             
+        } 
+		else if (push == '1/x'){
+		inputLabel.innerHTML = 1/inputLabel.innerHTML;
+		}
+		else {
+            if (inputLabel.innerHTML == '0') {
+                inputLabel.innerHTML = push;
+                 
+            } else {
+                inputLabel.innerHTML += push;
+                 
+            }
+        }
+		
+}
+
+</script>
+</body>
+</html>
