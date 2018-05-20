@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ESKİSEHİR</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<nav class="navbar navbar-inverse">
+  
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">ESKISEHİR</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="home.htm">Home</a></li>
+      <li><a href="localdishes.htm">Local Dishes</a></li>
+      <li><a href="historicalplaces.htm">Historical Places</a></li>
+      <li><a href="usefullinks.htm">Useful Links</a></li>
+	   <li><a href="aboutme.htm">About me</a></li>
+      <li><a href="contactme.htm">Contact me</a></li>
+      <li><a href="registration.htm"><font size="5">Registration</font></a></li>
+    </ul>
+
+</nav>
+</head>
+<body>
+<script >
+
+function formact() {
+    var isim = document.forms["formisim"]["nvalue"].value;
+    if (isim == "" || !/^[a-zA-Z]*$/g.test(document.formisim.nvalue.value)) {
+        alert("You can not leave the name blank or invalid value ");
+        return false;
+    }
+	var soyad = document.forms["formisim"]["svalue"].value;
+    if (soyad == "" || !/^[a-zA-Z]*$/g.test(document.formisim.svalue.value)) {
+        alert("You can not leave the surname blank or invalid value")
+        return false;
+    }
+	var dogum = document.forms["formisim"]["bvalue"].value;
+    if (dogum == "") {
+        alert("You can not leave the birthday blank");
+        return false;
+    }
+	var today = new Date();
+	var cyear = today.getFullYear();
+	var idate = document.getElementById("tarih").value;
+	var iyear = idate.substring(6, 10);
+	var gerekli =/(^(((0[1-9]|1[0-9]|2[0-8])[-](0[1-9]|1[012]))|((29|30|31)[-](0[13578]|1[02]))|((29|30)[-](0[4,6,9]|11)))[-](19|[2-9][0-9])\d\d$)|(^29[-]02[-](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)/;
+    var matchs = document.forms["formisim"]["bvalue"].value.match(gerekli);
+    if (!matchs) {
+	alert("İnvalid date...");	
+        return false;
+		}
+	else if(iyear > cyear){
+		alert("Invalid Date");	
+			return false;
+	}
+	
+	var mail = document.forms["formisim"]["evalue"].value;
+    if (mail == "") {
+        alert("You can not leave the e-mail blank");
+        return false;
+    }
+	
+    var et = mail.indexOf("@");
+    var dot = mail.lastIndexOf(".");
+    if (et<1 || dot<et+2 || dot+2>=mail.length) {
+        alert("Invalid for e-mail");
+        return false;
+    }
+	var sifre = document.forms["formisim"]["pvalue"].value;
+    if (sifre == "") {
+        alert("You can not leave the password blank");
+        return false;
+    }
+	if (!/^[a-zA-Z]*$/g.test(document.formisim.nvalue.value)) {
+        alert("Invalid");
+        return false;
+    }
+	else if (!/^[a-zA-Z]*$/g.test(document.formisim.svalue.value)) {
+        alert("Invalid");
+        return false;
+    }
+	var sifrecntrl= document.forms["formisim"]["pvalue"].value.length;
+	
+	 if (sifrecntrl< 6 || sifrecntrl > 15) { 
+    alert( "Password contains between 6 and 15 character."); 
+    return false;
+    }
+    if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/.test(document.forms["formisim"]["pvalue"].value)){
+	alert("Password should contain at least one uppercase letter, one numeric digit, and one special character.");
+	return false;
+	}
+   
+	
+	
+}
+</script>
+	
+ <form name="formisim" onsubmit="return formact()" action="Calculator.htm">
+	<center><div class="register"><br>
+		<table border="0">
+		<tr>
+			
+			<td>Name=</td>
+			<td><input type="text" name="nvalue"/></td>
+	
+		</tr>
+		<tr>
+			<td>Surname=</td>
+			<td><input type="text" name="svalue"/></td>
+			
+		</tr>
+		<tr>
+			<td>Birthday=</td>
+			<td><input id="tarih" type="text" name="bvalue" placeholder="dd-mm-yyyy"/></td>
+		</tr>
+		<tr>
+			<td>Email=</td>
+			<td><input type="text" name="evalue"placeholder="( ---- @domain . ---- )"/></td>
+		</tr>
+		<tr>
+			<td>Password=</td>
+			<td><input type="password" name="pvalue"/>
+			
+		</tr>
+		</tr>
+		<tr>
+			<td>Gender:</td>
+			<td><select name="Sex">  
+		<option>Man</option>  
+		<option>Woman</option>  
+		<option>Other</option>  
+		</select></td>
+		</tr>
+		<tr>
+			<td>İlgi alanı:</td>
+			<td><input type="checkbox" name="i1" value="Voleybol"> Swim <input type="checkbox" name="i2" value="Kitap okuma"> Code <input type="checkbox" name="i4" value="Diğer">Diğer</td>
+		</tr>
+		 
+		</table>
+		            
+		   
+		<button type="submit" value="Submit">Submit</button> <input type="reset" value="Reset!">
+</form><br>
+
+
+</div></center>
+ 
+ </body>
+ </html>
